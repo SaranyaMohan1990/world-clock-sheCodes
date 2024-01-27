@@ -22,9 +22,13 @@ function timeUpdate() {
 }
 
 function updateCityTime(event) {
-  let cityTImeZone = event.target.value;
-  let citiNameElement = cityTImeZone.split("/")[1];
-  let citiTime = moment().tz(cityTImeZone);
+  let cityTimeZone = event.target.value;
+  if (cityTimeZone == "currentLocation") {
+    cityTimeZone = moment.tz.guess();
+  }
+  let citiNameElement = cityTimeZone.split("/")[1];
+
+  let citiTime = moment().tz(cityTimeZone);
 
   let citiesElement = document.querySelector("#cities");
   citiesElement.innerHTML = ` <div class="city">
