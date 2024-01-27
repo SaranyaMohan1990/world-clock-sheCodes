@@ -19,6 +19,16 @@ function timeUpdate() {
       "h:mm:ss"
     )} <small>${sydneyTime.format("A")}</small>`;
   }
+  let veniceElement = document.querySelector("#venice");
+  if (veniceElement) {
+    let veniceDateElement = veniceElement.querySelector(".date");
+    let veniceTimeElement = veniceElement.querySelector(".time");
+    let veniceTime = moment().tz("Europe/Rome");
+    veniceDateElement.innerHTML = veniceTime.format("MMMM Do YYYY");
+    veniceTimeElement.innerHTML = `${veniceTime.format(
+      "h:mm:ss"
+    )} <small>${veniceTime.format("A")}</small>`;
+  }
 }
 
 function updateCityTime(event) {
