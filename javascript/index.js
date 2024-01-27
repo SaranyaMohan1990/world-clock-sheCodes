@@ -36,7 +36,7 @@ function updateCityTime(event) {
   if (cityTimeZone == "currentLocation") {
     cityTimeZone = moment.tz.guess();
   }
-  let citiNameElement = cityTimeZone.split("/")[1];
+  let citiNameElement = cityTimeZone.replaceAll("_", " ").split("/")[1];
 
   let citiTime = moment().tz(cityTimeZone);
 
@@ -49,6 +49,33 @@ function updateCityTime(event) {
           <div class="time">${citiTime.format(
             "h:mm:ss"
           )}<small>${citiTime.format("A")}</small></div>
+        </div>
+        <a href='javascript:;' onclick='updateAllCities();'>All Cities</a>
+        `;
+}
+function updateAllCities(event) {
+  let citiesElement = document.querySelector("#cities");
+  document.getElementById("selectCities").selectedIndex = 0;
+  citiesElement.innerHTML = `<div class="city" id="new-york">
+          <div>
+            <h2>New york</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+        <div class="city" id="sydney">
+          <div>
+            <h2>Sydney</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
+        </div>
+        <div class="city" id="venice">
+          <div>
+            <h2>Venice</h2>
+            <div class="date"></div>
+          </div>
+          <div class="time"></div>
         </div>`;
 }
 
